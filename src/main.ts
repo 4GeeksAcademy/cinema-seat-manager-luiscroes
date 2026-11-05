@@ -1,12 +1,4 @@
-if (typeof document !== "undefined") {
-  import("./style.css").then(() => {
-    const app = document.querySelector<HTMLParagraphElement>("#app");
-    if (app) {
-      app.textContent = "If you can see this, Tailwind is working.";
-    }
-  });
-}
+import { crearSala, mostrarSala } from "./cinema";
 
-console.log("Hello from src/main.ts");
-
-export {};
+const sala = crearSala();
+mostrarSala(sala);
