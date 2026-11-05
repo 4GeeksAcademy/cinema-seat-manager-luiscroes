@@ -68,3 +68,21 @@ export function reservarAsiento(sala: number[][], fila: number, columna: number)
   sala[fila][columna] = OCUPADO;
   return `Reserva confirmada: fila ${fila}, columna ${columna}.`;
 }
+
+// Cuenta los asientos de la sala. Devuelve [ocupados, disponibles].
+export function contarAsientos(sala: number[][]): number[] {
+  let ocupados = 0;
+  let disponibles = 0;
+
+  for (let fila = 0; fila < sala.length; fila++) {
+    for (let columna = 0; columna < sala[fila].length; columna++) {
+      if (sala[fila][columna] === OCUPADO) {
+        ocupados++;
+      } else {
+        disponibles++;
+      }
+    }
+  }
+
+  return [ocupados, disponibles];
+}
