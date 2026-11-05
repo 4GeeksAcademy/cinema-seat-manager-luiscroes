@@ -22,7 +22,7 @@ reserve seats and quickly find two free seats together.
 ## How it behaves
 
 - Seats are stored in a single two-dimensional array: `1` is occupied,
-  `0` is free. The project uses no objects or classes.
+  `0` is free. Seat data uses no objects or classes.
 - Every action shows a clear message, such as a confirmed reservation, a seat
   that is already taken, or adjacent seats found.
 - Reserving an occupied seat fails, and the seat stays as it was.

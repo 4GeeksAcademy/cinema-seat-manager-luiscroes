@@ -89,8 +89,10 @@ function pintarSala(): void {
 
 // Resalta el primer par libre y muestra el resultado de la búsqueda.
 botonBuscar.addEventListener("click", () => {
-  parContiguo = buscarAsientosContiguos(sala);
-  mensaje.textContent = describirAsientosContiguos(parContiguo);
+  const resultado = buscarAsientosContiguos(sala);
+
+  parContiguo = typeof resultado === "string" ? [] : resultado;
+  mensaje.textContent = describirAsientosContiguos(resultado);
   pintarSala();
 });
 
