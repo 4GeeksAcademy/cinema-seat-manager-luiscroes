@@ -86,3 +86,32 @@ export function contarAsientos(sala: number[][]): number[] {
 
   return [ocupados, disponibles];
 }
+
+// Busca el primer par de asientos libres contiguos en una misma fila.
+// Devuelve [[fila, columna], [fila, columna + 1]], o un arreglo vacío si no hay ninguno.
+export function buscarAsientosContiguos(sala: number[][]): number[][] {
+  for (let fila = 0; fila < sala.length; fila++) {
+    for (let columna = 0; columna < sala[fila].length - 1; columna++) {
+      if (sala[fila][columna] === LIBRE && sala[fila][columna + 1] === LIBRE) {
+        return [
+          [fila, columna],
+          [fila, columna + 1],
+        ];
+      }
+    }
+  }
+
+  return [];
+}
+
+// Convierte el resultado de la búsqueda en un mensaje claro para el personal.
+export function describirAsientosContiguos(asientos: number[][]): string {
+  if (asientos.length === 0) {
+    return "No hay asientos contiguos disponibles.";
+  }
+
+  const [fila, primeraColumna] = asientos[0];
+  const segundaColumna = asientos[1][1];
+
+  return `Asientos contiguos encontrados: fila ${fila}, columnas ${primeraColumna} y ${segundaColumna}.`;
+}
