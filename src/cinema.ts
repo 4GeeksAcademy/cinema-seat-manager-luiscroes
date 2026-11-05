@@ -46,3 +46,25 @@ export function mostrarSala(sala: number[][]): void {
     console.log(lineaDeAsientos);
   }
 }
+
+// Comprueba si la fila y la columna existen dentro de la sala.
+export function esPosicionValida(fila: number, columna: number): boolean {
+  const filaValida = Number.isInteger(fila) && fila >= 0 && fila < TOTAL_FILAS;
+  const columnaValida = Number.isInteger(columna) && columna >= 0 && columna < TOTAL_COLUMNAS;
+
+  return filaValida && columnaValida;
+}
+
+// Reserva un asiento si existe y está libre. Devuelve un mensaje con el resultado.
+export function reservarAsiento(sala: number[][], fila: number, columna: number): string {
+  if (!esPosicionValida(fila, columna)) {
+    return `Reserva fallida: la fila ${fila}, columna ${columna} no existe.`;
+  }
+
+  if (sala[fila][columna] === OCUPADO) {
+    return `Reserva fallida: la fila ${fila}, columna ${columna} ya está ocupada.`;
+  }
+
+  sala[fila][columna] = OCUPADO;
+  return `Reserva confirmada: fila ${fila}, columna ${columna}.`;
+}
